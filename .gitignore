@@ -1,0 +1,14 @@
+/__pycache__
+*.pyc
+/pytorch3d
+*.pth
+*.npy
+test.csv
+/results
+/data
+/test.ipynb
+/external/FaceVerse/mean_face.npy
+/external/FaceVerse/reference_full.npy
+/external/FaceVerse/std_face.npy
+/external/FaceVerse/2023_REACT2023_BeLFusion_baseline
+/external/FaceVerse/data/faceverse_simple_v2.npy
