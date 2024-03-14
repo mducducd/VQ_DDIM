@@ -74,7 +74,7 @@ data
 </details>
 
 <details><summary> <b> Environment </b>  </summary>
-Pytorch3D is priority to installed first [Pytorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md))
+Pytorch3D is priority to install first [Pytorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md)
 
 Our setup followed by [[Code]](https://github.com/reactmultimodalchallenge/baseline_react2024)
 <p>
