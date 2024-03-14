@@ -1,21 +1,9 @@
-# This is the official baseline code for REACT 2023 Multimodal Challenge
-[[Homepage]](https://sites.google.com/cam.ac.uk/react2023/home)  [[Reference Paper]](https://arxiv.org/abs/2302.06514) [[Code]](https://github.com/reactmultimodalchallenge/baseline_react2023)
 
-This repository provides baseline methods for the [REACT 2023 Multimodal Challenge](https://sites.google.com/cam.ac.uk/react2023/home)
+This repository provides solution methods for the [Second REACT Challenge](https://sites.google.com/cam.ac.uk/react2024)
 
 ### Baseline paper:
-https://arxiv.org/abs/2306.06583
+https://arxiv.org/pdf/2401.05166.pdf
 
-### Challenge Description
-Human behavioural responses are stimulated by their environment (or context), and people will inductively process the stimulus and modify their interactions to produce an appropriate response. When facing the same stimulus, different facial reactions could be triggered across not only different subjects but also the same subjects under different contexts. The Multimodal Multiple Appropriate Facial Reaction Generation Challenge (REACT 2023) is a satellite event of ACM MM 2023, (Ottawa, Canada, October 2023), which aims at comparison of multimedia processing and machine learning methods for automatic human facial reaction generation under different dyadic interaction scenarios. The goal of the Challenge is to provide the first benchmark test set for multimodal information processing and to bring together the audio, visual and audio-visual affective computing communities, to compare the relative merits of the approaches to automatic appropriate facial reaction generation under well-defined conditions. 
-
-
-#### Task 1 - Offline Appropriate Facial Reaction Generation
-This task aims to develop a machine learning model that takes the entire speaker behaviour sequence as the input, and generates multiple appropriate and realistic / naturalistic spatio-temporal facial reactions, consisting of AUs, facial expressions, valence and arousal state representing the predicted facial reaction. As a result,  facial reactions are required to be generated for the task given each input speaker behaviour. 
-
-
-#### Task 2 - Online Appropriate Facial Reaction Generation
-This task aims to develop a machine learning model that estimates each frame, rather than taking all frames into consideration. The model is expected to gradually generate all facial reaction frames to form multiple appropriate and realistic / naturalistic spatio-temporal facial reactions consisting of AUs, facial expressions, valence and arousal state representing the predicted facial reaction. As a result,  facial reactions are required to be generated for the task given each input speaker behaviour. 
 
 
 https://github.com/reactmultimodalchallenge/baseline_react2023/assets/35754447/8c7e7f92-d991-4741-80ec-a5112532460b
@@ -39,7 +27,7 @@ pip install -r requirements.txt
 ```
 
 
-## 👨‍🏫 Get Started 
+## Get Started 
 
 <details><summary> <b> Data </b> </summary>
 <p>
@@ -80,7 +68,6 @@ data
                    ├── ....
            ├── group-2
            ├── group-3
-       ├── UDIVA
    ├── Emotion
        ├── NoXI
        ├── RECOLA
@@ -91,7 +78,6 @@ data
                    ├── ....
            ├── group-2
            ├── group-3
-       ├── UDIVA
    ├── 3D_FV_files
        ├── NoXI
        ├── RECOLA
@@ -102,7 +88,6 @@ data
                    ├── ....
            ├── group-2
            ├── group-3
-       ├── UDIVA
             
 ```
  
@@ -115,30 +100,6 @@ data
 </p>
 </details>
 
-
-
-<details><summary> <b> External Tool Preparation </b> </summary>
-<p>
-
-We use 3DMM coefficients to represent a 3D listener or speaker, and for further 3D-to-2D frame rendering. 
- 
-The baselines leverage [3DMM model](https://github.com/LizhenWangT/FaceVerse) to extract 3DMM coefficients, and render 3D facial reactions.  
-
-- You should first download 3DMM (FaceVerse version 2 model) at this [page](https://github.com/LizhenWangT/FaceVerse) 
- 
-  and then put it in the folder (`external/FaceVerse/data/`).
- 
-  We provide our extracted 3DMM coefficients (which are used for our baseline visualisation) at [Google Drive] (https://drive.google.com/drive/folders/1RrTytDkkq520qUUAjTuNdmS6tCHQnqFu). 
-
-  We also provide the mean_face, std_face and reference_full of 3DMM coefficients at [Google Drive](https://drive.google.com/drive/folders/1uVOOJzY3p2XjDESwH4FCjGO8epO7miK4). Please put them in the folder (`external/FaceVerse/`).
-
- 
-Then, we use a 3D-to-2D tool [PIRender](https://github.com/RenYurui/PIRender) to render final 2D facial reaction frames.
- 
-- We re-trained the PIRender, and the well-trained model is provided at the [checkpoint](https://drive.google.com/drive/folders/1Ys1u0jxVBxrmQZrcrQbm8tagOPNxrTUA). Please put it in the folder (`external/PIRender/`).
-   
-</p>
-</details>
 
 
 <details><summary> <b> Training </b>  </summary>
@@ -213,106 +174,3 @@ python -m pytorch_fid  ./results/val_offline/fid/real  ./results/val_offline/fid
 
 
 
-
-<details><summary> <b> Test </b>  </summary>
-<p>
- Follow this to evaluate Trans-VAE or BeLFusion after training, or downloading the pretrained weights.
- 
-- Before testing, run the following script to get the martix (defining appropriate neighbours in test set):
- ```shell
- cd tool
- python matrix_split.py --dataset-path ./data --partition test
- ```
-&nbsp;  Please put files (`data_indices.csv`, `Approprirate_facial_reaction.npy` and `test.csv`) in the folder `./data/`.
-  
-- Then, evaluate a trained model on test set and run:
-
- ```shell
-python evaluate.py  --resume ./results/train_offline/best_checkpoint.pth  --gpu-ids 1  --outdir results/test_offline --split test
-```
- 
-&nbsp; or
- 
-```shell
-python evaluate.py  --resume ./results/train_online/best_checkpoint.pth  --gpu-ids 1  --online --outdir results/test_online --split test
-```
-
- 
-- For computing FID (FRRea), run the following script:
-
-```
-python -m pytorch_fid  ./results/test_offline/fid/real  ./results/test_offline/fid/fake
-```
-</p>
-</details>
-
-
-
-<details><summary> <b> Other baselines </b>  </summary>
-<p>
- 
-- Run the following script to sequentially evaluate the naive baselines presented in the paper:
- ```shell
- python run_baselines.py --split SPLIT
- ```
- SPLIT can be `val` or `test`.
-</p>
-</details>
-
-
-
-## 🖊️ Citation
-
-### Submissions should cite the following papers:
-
-#### Theory paper and baseline paper:
-
-[1] Song, Siyang, Micol Spitale, Yiming Luo, Batuhan Bal, and Hatice Gunes. "Multiple Appropriate Facial Reaction Generation in Dyadic Interaction Settings: What, Why and How?." arXiv preprint arXiv:2302.06514 (2023).
-
-[2] Song, Siyang, Micol Spitale, Cheng Luo, German Barquero, Cristina Palmero, Sergio Escalera, Michel Valstar et al. "REACT2023: the first Multi-modal Multiple Appropriate Facial Reaction Generation Challenge." arXiv preprint arXiv:2306.06583 (2023).
-
-#### Dataset papers:
-
-[3] Palmero, C., Selva, J., Smeureanu, S., Junior, J., Jacques, C. S., Clapés, A., ... & Escalera, S. (2021). Context-aware personality inference in dyadic scenarios: Introducing the udiva dataset. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 1-12).
-
-[4] Ringeval, F., Sonderegger, A., Sauer, J., & Lalanne, D. (2013, April). Introducing the RECOLA multimodal corpus of remote collaborative and affective interactions. In 2013 10th IEEE international conference and workshops on automatic face and gesture recognition (FG) (pp. 1-8). IEEE.
-
-[5] Cafaro, A., Wagner, J., Baur, T., Dermouche, S., Torres Torres, M., Pelachaud, C., ... & Valstar, M. (2017, November). The NoXi database: multimodal recordings of mediated novice-expert interactions. In Proceedings of the 19th ACM International Conference on Multimodal Interaction (pp. 350-359).
-
-#### Annotation, basic feature extraction tools and baselines:
-
-[6] Song, Siyang, Yuxin Song, Cheng Luo, Zhiyuan Song, Selim Kuzucu, Xi Jia, Zhijiang Guo, Weicheng Xie, Linlin Shen, and Hatice Gunes. "GRATIS: Deep Learning Graph Representation with Task-specific Topology and Multi-dimensional Edge Features." arXiv preprint arXiv:2211.12482 (2022).
-
-[7] Luo, Cheng, Siyang Song, Weicheng Xie, Linlin Shen, and Hatice Gunes. (2022, July) "Learning multi-dimensional edge feature-based au relation graph for facial action unit recognition." Proceedings of the Thirty-First International Joint Conference on Artificial Intelligence (pp. 1239-1246).
-
-[8] Toisoul, Antoine, Jean Kossaifi, Adrian Bulat, Georgios Tzimiropoulos, and Maja Pantic. "Estimation of continuous valence and arousal levels from faces in naturalistic conditions." Nature Machine Intelligence 3, no. 1 (2021): 42-50.
-
-[9] Eyben, Florian, Martin Wöllmer, and Björn Schuller. "Opensmile: the munich versatile and fast open-source audio feature extractor." In Proceedings of the 18th ACM international conference on Multimedia, pp. 1459-1462. 2010.
-
-[10] Barquero, German, Sergio Escalera, and Cristina Palmero. "BeLFusion: Latent Diffusion for Behavior-Driven Human Motion Prediction." arXiv preprint arXiv:2211.14304 (2022). 
-
-
-### Submissions are encouraged to cite previous facial reaction generation papers:
-
-[1] Huang, Yuchi, and Saad M. Khan. "Dyadgan: Generating facial expressions in dyadic interactions." In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops, pp. 11-18. 2017.
-
-[2] Huang, Yuchi, and Saad Khan. "A generative approach for dynamically varying photorealistic facial expressions in human-agent interactions." In Proceedings of the 20th ACM International Conference on Multimodal Interaction, pp. 437-445. 2018.
-
-[3] Shao, Zilong, Siyang Song, Shashank Jaiswal, Linlin Shen, Michel Valstar, and Hatice Gunes. "Personality recognition by modelling person-specific cognitive processes using graph representation." In proceedings of the 29th ACM international conference on multimedia, pp. 357-366. 2021.
-
-[4] Song, Siyang, Zilong Shao, Shashank Jaiswal, Linlin Shen, Michel Valstar, and Hatice Gunes. "Learning Person-specific Cognition from Facial Reactions for Automatic Personality Recognition." IEEE Transactions on Affective Computing (2022).
-
-[5] Ng, Evonne, Hanbyul Joo, Liwen Hu, Hao Li, Trevor Darrell, Angjoo Kanazawa, and Shiry Ginosar. "Learning to listen: Modeling non-deterministic dyadic facial motion." In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 20395-20405. 2022.
-
-[6] Zhou, Mohan, Yalong Bai, Wei Zhang, Ting Yao, Tiejun Zhao, and Tao Mei. "Responsive listening head generation: a benchmark dataset and baseline." In Computer Vision–ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23–27, 2022, Proceedings, Part XXXVIII, pp. 124-142. Cham: Springer Nature Switzerland, 2022.
-
-[7] Luo, Cheng, Siyang Song, Weicheng Xie, Micol Spitale, Linlin Shen, and Hatice Gunes. "ReactFace: Multiple Appropriate Facial Reaction Generation in Dyadic Interactions." arXiv preprint arXiv:2305.15748 (2023).
-
-[8] Xu, Tong, Micol Spitale, Hao Tang, Lu Liu, Hatice Gunes, and Siyang Song. "Reversible Graph Neural Network-based Reaction Distribution Learning for Multiple Appropriate Facial Reactions Generation." arXiv preprint arXiv:2305.15270 (2023).
-
-## 🤝 Acknowledgement
-Thanks to the open source of the following projects:
-
-- [FaceVerse](https://github.com/LizhenWangT/FaceVerse) &#8194;
-
-- [PIRender](https://github.com/RenYurui/PIRender) &#8194;
