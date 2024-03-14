@@ -126,5 +126,22 @@ python -m pytorch_fid  ./results/val_offline/fid/real  ./results/val_offline/fid
 </p>
 </details>
 
+<details><summary> <b> Supplement </b>  </summary>
+<p>
+evaluate_no_render.py for Belfusion metric evaluations only (audio-visual are not loaded)
+ 
+Our training followed by the Belfusion baseline instruction
+
+Hyper-paramerter in the config.yaml
+
+For the second stage we trained for 200 epochs and manualy choosed the best checkpoint
+
+We observed the hyper-parameter Beta of VQ-VAE Commitment loss trade off with Appropriateness and Diversity evaluation.
+
+We final choosed beta=0 as we omitted the Commitment loss.
+
+</p>
+</details>
+
 
 
