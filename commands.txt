@@ -1,27 +1,24 @@
-
 ##Train
 <OFFLINE> --> Training
 python train_vq_belfusion.py config=config/1_belfusion_vae.yaml name=All_VQVAEv2_W50
 python train_belfusion.py config=config/2_belfusion_ldm.yaml name=belfusion_vq_offline arch.args.k=10 arch.args.online=False
 
-<ONLINE> --> Validation
+<ONLINE> --> Training
 python train_vq_belfusion.py config=config/1_belfusion_vae.yaml name=All_VQVAEv2_W50
 python train_belfusion.py config=config/2_belfusion_ldm.yaml name=belfusion_vq_online arch.args.k=10 arch.args.online=True
 
 
 ###Validation
-<OFFLINE> --> Training
-python evaluate.py --dataset-path data/data --resume ./results/on_BeLFusion_k1/checkpoint_99.pth --split val --threads 32
-python evaluate.py --dataset-path data/data --resume ./results/on_BeLFusion_k10/checkpoint_99.pth --split val --threads 32
-python evaluate.py --dataset-path data --resume ./results/on_BeLFusion_k10/checkpoint_99.pth --split val --threads 32 --binarize
+<OFFLINE> --> Validation
+python evaluate.py --dataset-path data --resume ./results/belfusion_vq_offline/checkpoint_99.pth --split val --threads 32
+python evaluate.py --dataset-path data --resume ./results/belfusion_vq_offline/checkpoint_99.pth --split val --threads 32 --binarize
 
 <ONLINE> --> Validation
-python evaluate.py --dataset-path data/data --resume ./results/BeLFusion_k1/checkpoint_99.pth --split val --threads 32
-python evaluate.py --dataset-path data/data --resume ./results/BeLFusion_k10/checkpoint_99.pth --split val --threads 32
-python evaluate.py --dataset-path data/data --resume ./results/BeLFusion_k10/checkpoint_99.pth --split val --threads 32 --binarize
+python evaluate.py --dataset-path ./data --resume ./results/belfusion_vq_online_5/checkpoint_148.pth --split val
+python evaluate.py --dataset-path ./data --resume ./results/belfusion_vq_online_5/checkpoint_148.pth --split val --threads 32
 
 
 <OFFLINE/ONLINE> --> Test
 Same but replacing "--split val" by "--split test"
 
-evaluate_no_render.py for Belfusion metric evaluations only
+evaluate_no_render.py for Belfusion metric evaluations only (audio-visual are not loaded)
