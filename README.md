@@ -8,7 +8,7 @@ https://arxiv.org/pdf/2401.05166.pdf
 <p>
  
 **Challenge Data Description:**
-- The REACT 2023 Multimodal Challenge Dataset is a compilation of recordings from the following three publicly available datasets for studying dyadic interactions: [NOXI](https://dl.acm.org/doi/10.1145/3136755.3136780) and [RECOLA](https://ieeexplore.ieee.org/document/6553805)article/wacvw/2021/196700a001/1sZ3sn1GBxe). 
+- The REACT 2024 Multimodal Challenge Dataset is a compilation of recordings from the following three publicly available datasets for studying dyadic interactions: [NOXI](https://dl.acm.org/doi/10.1145/3136755.3136780) and [RECOLA](https://ieeexplore.ieee.org/document/6553805)
 
    
 **Data organization (`data/`) is listed below:**
