@@ -8,27 +8,6 @@ https://arxiv.org/pdf/2401.05166.pdf
 
 https://github.com/reactmultimodalchallenge/baseline_react2023/assets/35754447/8c7e7f92-d991-4741-80ec-a5112532460b
 
-## 🛠️ Installation
-
-### Basic requirements
-
-- Python 3.8+ 
-- PyTorch 1.9+
-- CUDA 11.1+ 
-
-### Install Python dependencies (all included in 'requirements.txt')
-
-```shell
-conda create -n react python=3.8
-conda activate react
-pip install git+https://github.com/facebookresearch/pytorch3d.git
-pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
-pip install -r requirements.txt
-```
-
-
-## Get Started 
-
 <details><summary> <b> Data </b> </summary>
 <p>
  
@@ -103,8 +82,6 @@ data
 <details><summary> <b> Evironment </b>  </summary>
 Pytorch3D is priority to installed first [Pytorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md))
 <p>
- 
-### Basic requirements
 
 - Python 3.9 
 - PyTorch 1.9+
@@ -116,9 +93,9 @@ Pytorch3D is priority to installed first [Pytorch3D](https://github.com/facebook
 <p>
  
  <b>BeLFusion</b>
- - First train the variational autoencoder (VAE):
+ - First train the Vector quantized variational autoencoder (VQ-VAE):
 ```shell
-python train_belfusion.py config=config/1_belfusion_vae.yaml name=All_VAEv2_W50
+python train_vq_belfusion.py config=config/1_belfusion_vae.yaml name=All_VQVAEv2_W50
 ```
  
  - Once finished, you will be able to train the offline/online variants of BeLFusion with the desired value for k:
@@ -134,17 +111,7 @@ python train_belfusion.py config=config/2_belfusion_ldm.yaml name=<NAME> arch.ar
 
 <details><summary> <b> Validation </b>  </summary>
 <p>
- Follow this to evaluate Trans-VAE or BeLFusion after training, or downloading the pretrained weights.
- 
-- Before validation, run the following script to get the martix (defining appropriate neighbours in val set):
- ```shell
- cd tool
- python matrix_split.py --dataset-path ./data --partition val
- ```
-&nbsp;  Please put files (`data_indices.csv`, `Approprirate_facial_reaction.npy` and `val.csv`) in the folder `./data/`.
-  
-- Then, evaluate a trained model on val set and run:
-
+   
  ```shell
 python evaluate.py  --resume ./results/train_offline/best_checkpoint.pth  --gpu-ids 1  --outdir results/val_offline --split val
 ```
