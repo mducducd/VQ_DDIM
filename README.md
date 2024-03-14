@@ -4,10 +4,6 @@ This repository provides solution methods for the [Second REACT Challenge](https
 ### Baseline paper:
 https://arxiv.org/pdf/2401.05166.pdf
 
-
-
-https://github.com/reactmultimodalchallenge/baseline_react2023/assets/35754447/8c7e7f92-d991-4741-80ec-a5112532460b
-
 <details><summary> <b> Data </b> </summary>
 <p>
  
