@@ -1,5 +1,5 @@
 
-This repository provides  solution methods for the Offline and Online at [Second REACT Challenge](https://sites.google.com/cam.ac.uk/react2024)
+This repository provides  solution methods for the Offline and Online tasks at [Second REACT Challenge](https://sites.google.com/cam.ac.uk/react2024)
 
 ### Baseline paper:
 https://arxiv.org/pdf/2401.05166.pdf
