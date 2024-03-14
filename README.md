@@ -100,21 +100,20 @@ data
 </p>
 </details>
 
+<details><summary> <b> Evironment </b>  </summary>
+Pytorch3D is priority to installed first [Pytorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md))
+<p>
+ 
+### Basic requirements
+
+- Python 3.9 
+- PyTorch 1.9+
+- CUDA 11.6 
+</details>
 
 
 <details><summary> <b> Training </b>  </summary>
 <p>
- 
- <b>Trans-VAE</b>
-- Running the following shell can start training Trans-VAE baseline:
- ```shell
- python train.py --batch-size 4  --gpu-ids 0  -lr 0.00001  --kl-p 0.00001 -e 50  -j 12  --outdir results/train_offline 
- ```
- &nbsp; or 
- 
-  ```shell
- python train.py --batch-size 4  --gpu-ids 0  -lr 0.00001  --kl-p 0.00001 -e 50  -j 12 --online  --window-size 16 --outdir results/train_online  
- ```
  
  <b>BeLFusion</b>
  - First train the variational autoencoder (VAE):
@@ -131,15 +130,7 @@ python train_belfusion.py config=config/2_belfusion_ldm.yaml name=<NAME> arch.ar
 </p>
 </details>
 
-<details><summary> <b> Pretrained weights </b>  </summary>
- If you would rather skip training, download the following checkpoints and put them inside the folder './results'.
-<p>
- 
- <b>Trans-VAE</b>: [download](https://drive.google.com/drive/folders/1tyLQnQj1e2SMArBkc3gHDZVHwSr_GEod?usp=share_link)
- 
- <b>BeLFusion</b>: [download](https://ubarcelona-my.sharepoint.com/:f:/g/personal/germanbarquero_ub_edu/EvF9K27g_DFPp2MS_8OqkmwBYGzUKs7J3QmkidbRLVSt6Q?e=WCJ2JU)
- 
-</details>
+
 
 <details><summary> <b> Validation </b>  </summary>
 <p>
