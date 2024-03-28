@@ -331,7 +331,7 @@ class AutoencoderRNN_VQVAE_v2(nn.Module):
 
         self.dropout = nn.Dropout(self.dropout)
 
-        self.quantize = VectorQuantizer(200,128,beta=0.0000001)
+        self.quantize = VectorQuantizer(200,128,beta=0)
 
     def _encode(self, x):
         assert x.shape[0] == self.window_size # otherwise it does not make sense
