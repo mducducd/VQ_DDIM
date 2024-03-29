@@ -11,7 +11,7 @@ arch:
 
         dropout: 0.0
         emb_length: 128
-        emb_emotion_path: /home/hdd1/duke/baseline_react2023/results/All_VQVAEv2_W50/checkpoint_999.pth
+        emb_emotion_path: All_VQVAEv2_W50/checkpoint_999.pth
         emb_preprocessing: "normalize"
         freeze_emotion_encoder: true
 
@@ -39,7 +39,7 @@ optimizer:
 trainer:
     mode: predict
     epochs: 200
-    resume: results/belfusion_vq_online/checkpoint_199.pth
+    resume: 
     out_dir: ./results
     save_period: 1
     val_period: 10
