@@ -1,14 +1,6 @@
 
-This repository provides  solution methods for the Offline and Online tasks at [Second REACT Challenge](https://sites.google.com/cam.ac.uk/react2024)
-
-### Baseline paper:
-https://arxiv.org/pdf/2401.05166.pdf
 
 <details><summary> <b> Data </b> </summary>
-<p>
- 
-**Challenge Data Description:**
-- The REACT 2024 Multimodal Challenge Dataset is a compilation of recordings from the following three publicly available datasets for studying dyadic interactions: [NOXI](https://dl.acm.org/doi/10.1145/3136755.3136780) and [RECOLA](https://ieeexplore.ieee.org/document/6553805)
 
    
 **Data organization (`data/`) is listed below:**
