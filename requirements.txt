@@ -14,11 +14,3 @@ torchvision
 tqdm==4.64.1
 tslearn==0.5.3.2
 omegaconf
-val_loss: 3.46055   val_rec_loss: 0.00000  val_kld_loss: 0.00000 
-Metric: | FRC: 0.15438 | FRD: 91.48388 | S-MSE: 0.03764 | FRVar: 0.02513 | FRDvs: 0.04011 | TLCC: 49.00000
-Latex-friendly --> model_name & 0.15 & 91.48 & 0.0376 & 0.0251 & 0.0401 & - & 49.00 \\
-
-vae 
-val_loss: 0.72209   val_rec_loss: 0.72191  val_kld_loss: 0.87637 
-Metric: | FRC: 0.12979 | FRD: 95.70970 | S-MSE: 0.02419 | FRVar: 0.00408 | FRDvs: 0.02683 | TLCC: 46.87099
-Latex-friendly --> model_name & 0.13 & 95.71 & 0.0242 & 0.0041 & 0.0268 & - & 46.87 \\
