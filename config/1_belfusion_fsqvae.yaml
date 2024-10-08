@@ -1,48 +1,37 @@
 arch:
-    type: LatentMLPMatcher
+    type: AutoencoderRNN_FSQ_VAE_v2
     args:
-        diffusion_steps: 10
-        k: 10
-
-        num_hid_channels: 1024
-        num_layers: 10
-
         emotion_dim: 25
-
+        coeff_3dmm_dim: 58
+        
+        emb_dims: [64, 64]
+        num_layers: 2
+        hidden_dim: 128
+        z_dim: 128
+        feature_dim: 128
+        rnn_type: 'lstm'
         dropout: 0.0
-        emb_length: 128
-        emb_emotion_path: /home/hdd1/duke/baseline_react2023/results/All_VQVAEv2_W50_reproduce/checkpoint_999.pth
-        emb_preprocessing: "normalize"
-        freeze_emotion_encoder: true
 
         window_size: 50
         seq_len: 750
-        online: false
 
 loss:
-    type: BeLFusionLoss
+    type: MSELoss_AE_v2_VQ
     args: 
-        losses: 
-            - L1Loss
-            - MSELoss
-        losses_multipliers:
-            - 10
-            - 10
-        losses_decoded:
-            - false
-            - true
+        w_mse: 1
+        w_coeff: 1
 
 optimizer:
-    lr: 0.0001
+    lr: 0.001
     weight_decay: 5e-4
 
 trainer:
-    mode: predict
-    epochs: 500
+    mode: autoencode
+    epochs: 300
     resume: 
     out_dir: ./results
-    save_period: 50
-    val_period: 50
+    save_period: 2
+    val_period: 5
 
 dataset:
     dataset_path: ./data
@@ -62,7 +51,7 @@ dataset:
     load_3dmm: true
 
 validation_dataset:
-    dataset_path: ./data
+    dataset_path: ./data/
     split: val
 
     img_size: 256

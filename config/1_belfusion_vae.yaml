@@ -1,15 +1,16 @@
 arch:
-    type: AutoencoderRNN_VAE_v2
+    type: AutoencoderLSTM
     args:
         emotion_dim: 25
         coeff_3dmm_dim: 58
+        audio_dim: 78
         
         emb_dims: [64, 64]
         num_layers: 2
         hidden_dim: 128
         z_dim: 128
         feature_dim: 128
-        rnn_type: 'gru'
+        rnn_type: 'lstm'
         dropout: 0.0
 
         window_size: 50
@@ -28,7 +29,7 @@ optimizer:
 
 trainer:
     mode: autoencode
-    epochs: 1000
+    epochs: 100
     resume: 
     out_dir: ./results
     save_period: 2
@@ -44,7 +45,7 @@ dataset:
 
     batch_size: 32
     shuffle: True
-    num_workers: 4
+    num_workers: 0
 
     load_video: false
     load_audio: false
@@ -61,7 +62,7 @@ validation_dataset:
 
     batch_size: 32
     shuffle: False
-    num_workers: 4
+    num_workers: 0
 
     load_video: false
     load_audio: false
@@ -78,7 +79,7 @@ test_dataset:
 
     batch_size: 32
     shuffle: False
-    num_workers: 4
+    num_workers: 0
 
     load_video: false
     load_audio: false
