@@ -9,9 +9,11 @@ https://arxiv.org/pdf/2401.05166.pdf
 > ⚠️Disclaimer: This repo is a work in progress and may not run flawlessly out-of-the-box. We're sharing the code as-is for reference and reproducibility.
 
 This repository is part of papers **Vector Quantized Diffusion Models for Multiple Appropriate Reaction Generation (FG2024)** and **Latent Behavior Diffusion for Sequential Reaction Generation in Dyadic Setting (ICPR2024)**. 
-   
+<details><summary> <b> Data </b>  </summary>
+<p>
 **Data organization (`data/`) is listed below:**
 ```data/partition/modality/site/chat_index/person_index/clip_index/actual_data_files```
+   
 The example of data structure.
 ```
 data
